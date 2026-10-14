@@ -100,12 +100,17 @@ body{
         height: 20rem;
     }
     .grid-container{
+        border-width: 5px;
+        padding: 0.5em;
         grid-template-columns: repeat(3, 7em);
         grid-template-rows: repeat(3, 7em);
-        grid-gap: 0.7em;
+        grid-gap: 0.5em;
     }
     .grid-item{
-        font-size: 3em;
+        font-size: 3rem;
         padding: 0.5em;
+    }
+    .grid-item:hover{
+        transform: translateY(-5px);
     }
 }
