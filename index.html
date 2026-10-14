@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tic tac toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio src="sounds/850090__lbrady240__pop04.wav" preload="auto" id="popup-sound"></audio>
+    <audio src="sounds/789793__quatricise__pop-4.wav" preload="auto" id="click-sound"></audio>
+    <audio src="sounds/351809__plasterbrain__press-start-phoenix-wright.ogg" preload="auto" id="start-sound"></audio>
+    <div class="grid-container">
+        <div class="grid-item" x="1" y="1"></div>
+        <div class="grid-item" x="1" y="2"></div>
+        <div class="grid-item" x="1" y="3"></div>
+        <div class="grid-item" x="2" y="1"></div>
+        <div class="grid-item" x="2" y="2"></div>
+        <div class="grid-item" x="2" y="3"></div>
+        <div class="grid-item" x="3" y="1"></div>
+        <div class="grid-item" x="3" y="2"></div>
+        <div class="grid-item" x="3" y="3"></div>
+    </div>
+    <div id="shadow"></div>
+    <div id="popup">
+        <label id="scorex"></label>
+        <label style="text-shadow: 5px 5px 3px blueviolet;">vs</label>
+        <label id="scoreo"></label>
+        <p id="winner"></p><br>
+        <button id="exit"><img src="img/refresh-svgrepo-com.svg" alt="">reset</button>
+        <button id="continue"><img src="img/play-1003-svgrepo-com.svg" alt="">play again</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
