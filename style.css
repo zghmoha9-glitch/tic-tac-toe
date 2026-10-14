@@ -96,21 +96,32 @@ body{
 }
 @media(max-width:700px){
     #popup{
-        width:21rem;
-        height: 20rem;
+        width:100vw;
+        height:calc(100vw * 2 / 3);
+        font-size: 7vw;
+    }
+    #popup button{
+        font-size: 0.8em;
     }
     .grid-container{
-        border-width: 5px;
-        padding: 0.5em;
-        grid-template-columns: repeat(3, 7em);
-        grid-template-rows: repeat(3, 7em);
-        grid-gap: 0.5em;
+        border-width: 1.5vw;
+        padding: 1.5vw; 
+        grid-template-columns: repeat(3, 30vw);
+        grid-template-rows: repeat(3, 30vw);
+        grid-gap: 1.5vw;
+
     }
     .grid-item{
-        font-size: 3rem;
-        padding: 0.5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15vw;
+        padding: 1.5vw;
     }
     .grid-item:hover{
-        transform: translateY(-5px);
+        transform: translateY(-1vw);
+    }
+    .usable:active{
+        transform: scale(0.7);
     }
 }
