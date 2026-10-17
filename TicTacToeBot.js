@@ -32,7 +32,7 @@ function weightMATH(cordinate, dimension,matrix) {
     }
     return counter;
 }
-export class bot {
+class bot {
     id=0;
     // id 1 for x and -1 for o
     constructor(id){
@@ -141,6 +141,6 @@ function bot_wars(bot1,bot2){
         }
     }
 }
-let bot_O = new bot(-1);
+export let bot_O = new bot(-1);
 let bot_X = new bot(1);
 bot_wars(bot_X,bot_O);
