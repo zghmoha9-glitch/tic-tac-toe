@@ -1,3 +1,5 @@
+//import bot
+import {bot} from "./TicTacToeBot.js";
 //the global variables
 //dom elements
 //the grid cells
@@ -53,7 +55,7 @@ function start() {
                 item.classList.remove("usable");
                 item.onclick = null;
                 //check if the state of match(win or draw)
-                check("O", Number(item.getAttribute("x")), Number(item.getAttribute("y")));
+                check("O", Number(item.getAttribute("x")), Number(item.getAttribute("y")),matrix);
             } else {
                 // same as the above
                 item.parentElement.style.borderColor = "hsl(240, 100%, 45%)";
@@ -63,7 +65,7 @@ function start() {
                 turn++;
                 item.classList.remove("usable");
                 item.onclick = null;
-                check("X", Number(item.getAttribute("x")), Number(item.getAttribute("y")));
+                check("X", Number(item.getAttribute("x")), Number(item.getAttribute("y")),matrix);
             };
         }
     });
@@ -98,15 +100,13 @@ function draw() {
     //check draw and if so end the game and display score
     if (turn === 10) {
         winner.textContent = `IT S DRAW -_-`;
-        scorex++;
-        scoreo++;
         pop();
     }
 }
-function check(player, row, colum) {
+function check(player, row, colum,matrix) {
     //check each posiable wining state(colum,row,diagonal) and if so we end  the game and resart a new one
     // we start with colum and row first
-    if (isWining(row,colum)){
+    if (isWining(row,colum,matrix)){
         score(player)
         return;
     }
@@ -130,7 +130,7 @@ function endgame() {
 window.addEventListener("load", function () {
     start();
 });
-function weightMATH(cordinate,dimension) {
+function weightMATH(cordinate,dimension,matrix) {
     let counter = 0;
     let index=0
     //1 dimension mean rows , 2 dimension mean colums 3 dimension mean diagonal 4 dimension mean anti diagonal
@@ -158,17 +158,17 @@ function weightMATH(cordinate,dimension) {
     }
     return counter;
 }
-function isWining(cordinateX,cordinateY){
+function isWining(cordinateX,cordinateY,matrix){
     //cord x mean row and y mean column
     if (cordinateX + cordinateY === 2 || cordinateX === cordinateY) {
-        let dig1=Math.abs(weightMATH(-1,3)) === 3;
-        let dig2=Math.abs(weightMATH(-1,4)) === 3;
+        let dig1=Math.abs(weightMATH(-1,3,matrix)) === 3;
+        let dig2=Math.abs(weightMATH(-1,4,matrix)) === 3;
         if(dig1 || dig2){
             return true;
         };
     }
-    let row=Math.abs(weightMATH(cordinateX,1)) === 3;
-    let colum=Math.abs(weightMATH(cordinateY,2)) === 3;
+    let row=Math.abs(weightMATH(cordinateX,1,matrix)) === 3;
+    let colum=Math.abs(weightMATH(cordinateY,2,matrix)) === 3;
     if(row || colum){
         return true;
     }
