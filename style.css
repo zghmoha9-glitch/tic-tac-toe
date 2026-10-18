@@ -30,7 +30,7 @@ button{
 button:hover{
     padding: 10px 25px;
     box-shadow:5px 5px 10px blue;
-    color: hsl(0, 100%, 50%);
+    color: hsl(340, 60%, 50%);
 }
 button:active{
     box-shadow:3px 3px 5px hsl(240, 100%, 50%) ;
@@ -41,6 +41,21 @@ header{
     text-shadow: 1px 3px 1px hsl(260, 45%, 35%),
     4px 7px 1px hsl(0, 90%, 60%) ,
     6px 9px 1px hsl(240, 100%, 0%),
-    -2px -1px 1px hsl(240, 100%, 0%)
+    -2px -1px 1px hsl(240, 100%, 0%),
+    9px 12px 5px hsl(240,10%,10%),
+    -3px -2px 1px hsl(240,100%,80%),
+    0 15px 5px hsl(240, 100%, 0%)
     ;
+}
+@media(max-width:1000px){
+    body{
+        row-gap: 4rem;
+    }
+    header{
+        font-weight: bold;
+        text-align: center;
+    }
+    button{
+        padding: 0.5em;
+    }
 }

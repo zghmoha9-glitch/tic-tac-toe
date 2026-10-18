@@ -1,6 +1,6 @@
 //import bot
 import { bot_O } from "./TicTacToeBot.js";
-let matchend=false;
+let matchend = false;
 //the global variables
 //dom elements
 //the grid cells
@@ -31,48 +31,50 @@ let matrix = [
     [0, 0, 0],
     [0, 0, 0]
 ]
-let turn;
 //player score
 let scorex = 0;
 let scoreo = 0;
+let turn;
 // main function
-function updateGameStatus(player, item) {
-    // we add the cordinates of the new cell , disable it and change the player
-    //we check which player turn and update the cell acordinaly
-    if (player === "O") {
-        item.parentElement.style.borderColor = "hsl(350, 100%, 45%)";
-        item.style.color = "hsl(240, 100%, 40%)";
-    } else {
-        item.parentElement.style.borderColor = "hsl(240, 100%, 45%)"; 
-        item.style.color = "hsl(350, 100%, 40%)";
-    }
-    item.textContent = `${player}`;
-    item.classList.remove("usable");
-    item.onclick = null;
-    //check if the state of match(win or draw)
-    check(`${player}`, Number(item.getAttribute("x")), Number(item.getAttribute("y")), matrix);
-}
-function botTurn(cord) {
-    let botmove=bot_O.bot_thinks(cord.x,cord.y,matrix);
-    const item=document.getElementById(`${botmove.x*3+ botmove.y+ 1}`);
-    updateGameStatus("O",item);
-}
 function playTurn(item) {
+    function updateGameStatus(player, item) {
+        // we add the cordinates of the new cell , disable it and change the player
+        //we check which player turn and update the cell acordinaly
+        if (player === "O") {
+            item.parentElement.style.borderColor = "hsl(350, 100%, 45%)";
+            item.style.color = "hsl(240, 100%, 40%)";
+        } else {
+            item.parentElement.style.borderColor = "hsl(240, 100%, 45%)";
+            item.style.color = "hsl(350, 100%, 40%)";
+        }
+        item.textContent = `${player}`;
+        item.classList.remove("usable");
+        item.onclick = null;
+        //check if the state of match(win or draw)
+        check(`${player}`, Number(item.getAttribute("x")), Number(item.getAttribute("y")), matrix);
+        turn++
+    }
+    function botTurn(cord) {
+        clickSound.currentTime = 0;
+        clickSound.play();
+        let botmove = bot_O.bot_thinks(cord.x, cord.y, matrix);
+        const item = document.getElementById(`${botmove.x * 3 + botmove.y + 1}`);
+        updateGameStatus("O", item);
+    }
     if (turn % 2 === 1) {
         let xmove = { x: Number(item.getAttribute("x")), y: Number(item.getAttribute("y")) }
         matrix[xmove.x][xmove.y] = 1;
         updateGameStatus("X", item);
-        turn++
-        if (JSON.parse(localStorage.getItem("isbot")) && !matchend) {
-            const timer=setTimeout(botTurn(xmove),5000);
-            clearTimeout(timer);
-            turn++
+        if (JSON.parse(localStorage.getItem("isbot")) && !matchend ) {
+            setTimeout(() => {
+                botTurn(xmove);
+            }
+                , 800);
             return;
         }
-    } else if(!JSON.parse(localStorage.getItem("isbot"))) {
+    } else if (!JSON.parse(localStorage.getItem("isbot"))) {
         matrix[Number(item.getAttribute("x"))][Number(item.getAttribute("y"))] = -1;
         updateGameStatus("O", item);
-        turn++
     }
 }
 function startgame() {
@@ -82,12 +84,12 @@ function startgame() {
     grid.forEach((item) => {
         item.classList.add("usable");
         item.onclick = function () {
-            clickSound.currentTime=0
+            clickSound.currentTime = 0
             clickSound.play();
             playTurn(item);
         }
     })
-    
+
 }
 function pop() {
     //pop the score board
@@ -113,12 +115,12 @@ function score(player) {
         scoreo++
     }
     winner.textContent = `the winner is player ${player}`;
-    matchend=true;
     pop();
 }
 function draw() {
     //check draw and if so end the game and display score
     if (turn === 9) {
+        matchend=true
         winner.textContent = `IT S DRAW -_-`;
         pop();
     }
@@ -127,6 +129,7 @@ function check(player, row, colum, matrix) {
     //check each posiable wining state(colum,row,diagonal) and if so we end  the game and resart a new one
     // we start with colum and row first
     if (isWining(row, colum, matrix)) {
+        matchend = true;
         score(player)
         return;
     }
@@ -139,7 +142,7 @@ function endgame() {
         [0, 0, 0],
         [0, 0, 0]
     ]
-    matchend=false;
+    matchend = false;
     grid[0].parentElement.style.borderColor = "hsl(0, 0%, 20%)";
     grid.forEach((item) => {
         item.textContent = "";
