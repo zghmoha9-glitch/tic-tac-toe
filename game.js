@@ -1,6 +1,5 @@
 //import bot
 import { bot_O } from "./TicTacToeBot.js";
-let Vs_BOT = true;
 let matchend=false;
 //the global variables
 //dom elements
@@ -64,13 +63,13 @@ function playTurn(item) {
         matrix[xmove.x][xmove.y] = 1;
         updateGameStatus("X", item);
         turn++
-        if (Vs_BOT && !matchend) {
+        if (JSON.parse(localStorage.getItem("isbot")) && !matchend) {
             const timer=setTimeout(botTurn(xmove),5000);
             clearTimeout(timer);
             turn++
             return;
         }
-    } else if(!Vs_BOT) {
+    } else if(!JSON.parse(localStorage.getItem("isbot"))) {
         matrix[Number(item.getAttribute("x"))][Number(item.getAttribute("y"))] = -1;
         updateGameStatus("O", item);
         turn++

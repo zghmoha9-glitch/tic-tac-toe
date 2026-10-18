@@ -117,6 +117,7 @@ class bot {
             x++;
         }
     }
+    
 }
 function bot_wars(bot1,bot2){
     //test function for bot objects
