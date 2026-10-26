@@ -23,12 +23,27 @@
     </div>
     <div id="shadow"></div>
     <div id="popup">
-        <label id="scorex"></label>
-        <label style="text-shadow: 5px 5px 3px blueviolet;">vs</label>
-        <label id="scoreo"></label>
-        <p id="winner"></p><br>
-        <button id="exit"><img src="img/refresh-svgrepo-com.svg" alt="">reset</button>
-        <button id="continue"><img src="img/play-1003-svgrepo-com.svg" alt="">play again</button>
+        <div style="grid-area: score;">
+            <label id="scorex" ></label>
+            <label style="text-shadow: 5px 5px 3px blueviolet">vs</label>
+            <label id="scoreo" ></label>
+        </div>
+        <p id="winner" style="grid-area: winner;"></p><br>
+        <button id="exit" style="grid-area: exit;">
+            <svg viewBox="0 0 898.2 974.9">
+                <path
+                    d="M509.9 503.5 L381 22.6 L861.9 151.5 L774 239.4 C924.2 409.5 918 669.4 755.3 832 C586.2 1001.2 312 1001.2 142.8 832 C-26.3 662.9 -26.3 388.7 142.8 219.6 L294.9 371.7 C210.2 456.7 210.3 594.3 295.2 679.2 C380.2 764.2 518 764.2 603 679.2 C681.4 600.8 687.5 477.5 621.2 392.1 Z"
+                    style="stroke-width:32;stroke-miterlimit:10" />
+            </svg>
+            new game
+        </button>
+        <button id="continue" style="grid-area: play;">
+            <svg  viewBox="0 0 83.8 94.9">
+                    <path d="M4 79.5 L4 15.4 C4 6.5 13.7 1.1 21.3 5.7 L74.3 37.7 C81.7 42.1 81.7 52.8 74.3 57.2 L21.3 89.2 C13.7 93.8 4 88.4 4 79.5 Z"
+                        style="stroke-width:8;stroke-miterlimit:10" />
+            </svg>
+            play again
+        </button>
     </div>
     <script src="game.js" type="module"></script>
 </body>

@@ -46,27 +46,40 @@ body{
     transition: z-index 0.3s  ease-in 0.1s;
 }
 #popup{
+    padding: 1rem;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "score score score score "
+    "winner winner winner winner"
+    "exit exit play play";
+    gap: 0.5rem;
     z-index: -2;
     position: absolute;
     background-color: hsla(0, 0%, 20%);
     width: 30rem;
     height: 20rem;
-    text-align: center;
-    font-size: 2em;
+    font-size:2.5rem;
     border-radius: 10px;
     border: outset black 10px;
     transition: z-index 0.3s  ease-in 0.1s;
 }
-#popup label{
-    font-size: 3.5em;
+#popup div label{
+    font-size: 6.5rem;
 }
 #popup p{
     text-shadow: 5px 5px 3px blue;
 }
 #popup button{
-    font-size: 0.7em;
+    text-wrap: nowrap;
+    padding: 0.3em;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.4rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    padding: 5px 15px;
     color: hsl(240, 100%, 50%);
     border: none;
     box-shadow: 3px 3px 5px red;
@@ -75,18 +88,25 @@ body{
     transition: all 0.3s ease-in-out 0.1s;
 }
 #popup button:hover{
-    padding: 10px 25px;
+    padding:0 25px ;
+    scale: 1.1;
 }
 #popup button:active{
     box-shadow:3px 3px 5px hsl(240, 100%, 50%) ;
     color: hsl(0, 100%, 50%);
     transition-duration: 0.1s;
 }
-#popup button img{
-    width: 1em;
-    height: 1em;
-    margin-right: 0.2em;
-    margin-bottom: -0.1em;
+#popup button:active svg{
+    fill: red;
+    stroke: blue;
+}
+#popup button svg{
+    width: 2rem;
+    height: 2rem;
+    fill: hsl(240, 100%, 50%);
+    stroke: hsl(0, 100%, 50%);
+    flex-shrink: 0;
+
 }
 #scorex{
     text-shadow: 5px 5px 3px hsl(0, 100%, 50%) ;
