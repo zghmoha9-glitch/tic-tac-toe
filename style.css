@@ -14,6 +14,9 @@ body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 button{
+    display: inline-flex;
+    gap: 0.8rem;
+    align-items: center;
     font-size: 2rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     padding: 5px 15px;
@@ -47,6 +50,21 @@ header{
     0 15px 5px hsl(240, 100%, 0%)
     ;
 }
+svg{
+    width: 2.2rem;
+    height: 2.2rem;
+
+}
+.acc1{
+    fill:hsl(340, 60%, 50%) ;
+}
+.acc2{
+    fill:hsl(260, 45%, 35%) ;
+}
+.acc3{
+    fill:hsl(260, 45%, 35%);
+    stroke: hsl(340, 60%, 50%);
+}
 @media(max-width:1000px){
     body{
         row-gap: 4rem;
@@ -57,5 +75,8 @@ header{
     }
     button{
         padding: 0.5em;
+    }
+    button:hover{
+        padding:10px 15px;
     }
 }
