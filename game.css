@@ -117,7 +117,7 @@ body{
 @media(max-width:700px){
     #popup{
         width:100vw;
-        height:calc(100vw * 2 / 3);
+        height: 80vw;
         font-size: 7vw;
     }
     #popup button{
