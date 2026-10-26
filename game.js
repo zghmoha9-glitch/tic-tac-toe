@@ -58,6 +58,7 @@ function playTurn(item) {
         clickSound.currentTime = 0;
         clickSound.play();
         let botmove = bot_O.bot_thinks(cord.x, cord.y, matrix);
+        localStorage.setItem("botmove",JSON.stringify(botmove))
         const item = document.getElementById(`${botmove.x * 3 + botmove.y + 1}`);
         updateGameStatus("O", item);
     }
@@ -79,6 +80,7 @@ function playTurn(item) {
 }
 function startgame() {
     turn = 1;
+    localStorage.setItem("botmove",JSON.stringify({x:-1,y:-1}))
     startSound.currentTime = 0;
     startSound.play();
     grid.forEach((item) => {
